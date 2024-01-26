@@ -7,7 +7,7 @@ I used BEM methodology in my page, also i adhered to clean and readable code. SC
 
 ## Demo
 
-[DEMO LINK](https://Vladyslav-amp.github.io/MyBike/)
+[DEMO LINK](https://Vladyslav-amp.github.io/MyBike_landing/)
 
 ## Features
 
