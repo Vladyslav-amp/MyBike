@@ -1,0 +1,77 @@
+.container {
+  padding-inline: 20px;
+  overflow: none;
+}
+@media (min-width: 576px) {
+  .container {
+    padding-inline: 72px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.btn {
+  width: 100%;
+  font-size: 16px;
+  border-radius: 40px;
+  padding: 14px 0;
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.8s;
+}
+
+.btn:hover {
+  box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+}
+
+.btn:active {
+  box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+}
+
+@media (min-width: 576px) {
+  .recommended__btn {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (min-width: 1024px) {
+  .recommended__btn {
+    display: flex;
+    justify-content: center;
+  }
+}
+.recommended__btn-block {
+  display: block;
+  border-radius: 40px;
+  padding: 14px 0;
+  text-align: center;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.8s;
+}
+@media (min-width: 576px) {
+  .recommended__btn-block {
+    width: 50%;
+  }
+}
+@media (min-width: 1024px) {
+  .recommended__btn-block {
+    width: 33.33%;
+  }
+}
+.recommended__btn-block:hover {
+  box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.4);
+}
+.recommended__btn-block:active {
+  box-shadow: 1px 4px 16px rgba(232, 232, 240, 0.64);
+}

@@ -1,0 +1,48 @@
+.container {
+  padding-inline: 20px;
+  overflow: none;
+}
+@media (min-width: 576px) {
+  .container {
+    padding-inline: 72px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1020px;
+    margin-inline: auto;
+    padding-inline: 120px;
+  }
+}
+
+.top-bar {
+  padding-block: 29px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (min-width: 576px) {
+  .top-bar {
+    padding-block: 36px;
+  }
+}
+.top-bar__icons {
+  display: flex;
+  position: relative;
+  gap: 24px;
+}
+.top-bar__logo-link {
+  display: flex;
+}
+.top-bar__logo {
+  height: 38px;
+  transition: transform 0.3s;
+}
+.top-bar__logo:hover {
+  transform: scale(1.2);
+}
+@media (min-width: 576px) {
+  .top-bar__logo {
+    height: 44px;
+  }
+}
