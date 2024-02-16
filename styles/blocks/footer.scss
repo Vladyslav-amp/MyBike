@@ -1,10 +1,16 @@
 .footer {
+  height: 50vh;
 
-  background-image: url("/images/footer__background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 60%;
+  @include onDesktop {
+    height: 100vh;
+  }
 
-  height: 100vh;
-  width: 100%;
+   &-block {
+    background-image: url("/images/footer__background.png");
+    height: 100%;
+    width: 100%;
+    background-position: 60% 60%;
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
 }
