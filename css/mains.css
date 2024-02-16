@@ -820,7 +820,7 @@
   }
 }
 .footer-block {
-  background-image: url("/images/footer__background.png");
+  background-image: url("../images/footer__background.png");
   height: 100%;
   width: 100%;
   background-position: 60% 60%;
