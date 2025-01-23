@@ -14,20 +14,26 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      # 1. Checkout repozytorium
       - uses: actions/checkout@v4
 
+      # 2. Ustawienie MSBuild
       - name: Setup MSBuild path
         uses: microsoft/setup-msbuild@v1.0.2
 
+      # 3. Ustawienie NuGet
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.5
 
+      # 4. Przywrócenie paczek NuGet
       - name: Restore NuGet packages
         run: nuget restore
 
+      # 5. Publikacja do folderu
       - name: Publish to folder
         run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
+      # 6. Przesłanie artefaktów do kolejnego kroku
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -40,14 +46,16 @@ jobs:
     environment:
       name: 'Production'
     permissions:
-      id-token: write
+      id-token: write # Wymagane dla generowania tokena JWT
 
     steps:
+      # 1. Pobranie artefaktów z zadania build
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: ASP-app
-      
+
+      # 2. Logowanie do Azure
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -55,15 +63,24 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
+      # 3. Deploy do Azure Web App
       - name: Deploy to Azure Web App
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'demos1'
           slot-name: 'Production'
           package: .
 
+      # 4. Ustawienie zmiennej środowiskowej z URL aplikacji
       - name: Set application URL
         run: echo "WEBAPP_URL=https://demos1.azurewebsites.net" >> $GITHUB_ENV
 
+      # 5. Zapisanie wyniku deployu w GITHUB_OUTPUT
+      - name: Save deployment output
+        run: echo "webapp-url=https://demos1.azurewebsites.net" >> $GITHUB_OUTPUT
+
+      # 6. Potwierdzenie zakończenia deployu
       - name: Confirm deployment
-        run: echo "Application deployed to $WEBAPP_URL"
+        run: |
+          echo "Application successfully deployed to $WEBAPP_URL"
